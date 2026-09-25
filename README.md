@@ -42,6 +42,7 @@ The system:
 
 ---
 
+
 ## 🧩 Main Modules
 
 | Module            | Purpose                                    |
@@ -56,6 +57,31 @@ The system:
 | 🐧 Linux C        | Employee management and attendance records |
 
 ---
+## 📂 Project Structure
+
+```text
+📦 Attendify-RFID
+│
+├── 📄 projectmain.c
+├── 📄 lcd.c
+├── 📄 lcd.h
+├── 📄 delay.c
+├── 📄 delay.h
+├── 📄 uart.c
+├── 📄 uart.h
+├── 📄 uart1.c
+├── 📄 uart1.h
+├── 📄 keypad.c
+├── 📄 keypad.h
+├── 📄 spi.c
+├── 📄 spi.h
+├── 📄 spi_eeprom.c
+├── 📄 spi_eeprom.h
+│
+├── 🐧 linux_main.c
+├── 📊 users.csv
+│
+└── 📖 README.md
 
 ## 🔄 System Flow
 
@@ -82,6 +108,7 @@ The system:
   Admin Card
   Information
 ```
+
 
 ---
 
