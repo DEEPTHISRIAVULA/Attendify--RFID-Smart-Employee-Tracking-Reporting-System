@@ -3,7 +3,8 @@
 #include "SPI_functions.h"
 #include "delay.h"
 
-void InitializeSPI(void){
+void InitializeSPI(void)
+{
   PINSEL0 |= (0x55 << 8);        // P0.4 SCK, P0.5 MISO, P0.6 MOSI
   PINSEL0 &= ~(3<<14);           // P0.7 as GPIO
   IODIR0  |= (1<<7);             // P0.7 output
