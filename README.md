@@ -62,7 +62,7 @@ The system:
 ```text
 📦 Attendify-RFID
 │
-├── 📄 projectmain.c
+├── 📄 main.c
 ├── 📄 lcd.c
 ├── 📄 lcd.h
 ├── 📄 delay.c
