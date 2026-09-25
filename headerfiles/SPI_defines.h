@@ -1,5 +1,4 @@
 #include <LPC21xx.h>
-
 #define PULL_CS IOCLR0 = (1<<7);
 #define PUSH_CS IOSET0 = (1<<7);
 #define READ_MODE         0x03
