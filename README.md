@@ -1,171 +1,221 @@
-# 🚀 Attendify-RFID
+# Attendify – RFID Smart Employee Tracking & Reporting System
 
-### 📡 Smart Employee Tracking & Reporting System
+An **RFID-based employee attendance and tracking system** developed using **Embedded C, LPC2148 ARM7, and Linux C programming**.
 
-An **RFID-based employee attendance system** developed using **LPC2148, Embedded C, SPI EEPROM, UART and Linux C**.
-
----
-
-## 🎯 Overview
-
-Attendify automates employee attendance using **RFID cards**.
-
-The system:
-
-* 🪪 Identifies employees using RFID
-* 🕒 Records IN/OUT attendance with date & time
-* 💾 Stores admin information in **SPI EEPROM**
-* 🖥️ Communicates with a Linux application through UART
-* 📊 Maintains employee records in a CSV file
+The system uses an RFID reader to identify employees, records their IN/OUT attendance with date and time, and stores attendance information in a CSV database through a Linux-based application.
 
 ---
 
-## 🔧 Hardware
+## ✨ Features
 
-* **LPC2148 ARM7 Microcontroller**
-* **RFID Reader & Cards**
-* **16×2 LCD**
-* **4×4 Keypad**
-* **SPI EEPROM – AT25LC512**
-* **MAX232**
-* **USB-to-UART Converter**
+* RFID-based employee identification
+* Admin authentication using an RFID card
+* Add, edit and delete employee information
+* Employee IN/OUT attendance tracking
+* RTC-based date and time recording
+* SPI EEPROM data storage
+* LCD and keypad interface
+* UART communication between LPC2148 and Linux PC
+* CSV-based employee and attendance records
+* Working-hours calculation
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                    RFID CARD
+                        │
+                        ▼
+                  RFID READER
+                        │
+                        ▼
+                 ┌─────────────┐
+                 │   LPC2148   │
+                 │ Embedded C  │
+                 └──────┬──────┘
+                        │
+                     UART0
+                        │
+                        ▼
+                 ┌─────────────┐
+                 │ Linux C App │
+                 │   main.c    │
+                 └──────┬──────┘
+                        │
+                        ▼
+                  CSV Database
+```
+
+The project contains **two application programs**:
+
+1. **Embedded application** – runs on the LPC2148 and handles RFID, LCD, keypad, RTC, SPI EEPROM, interrupts and UART.
+2. **Linux application** – runs on the PC, communicates with the controller through UART and manages employee/attendance information in the CSV file.
+
+---
+
+## 🔄 How It Works
+
+### 👨‍💼 Admin
+
+When the **Admin RFID card** is scanned:
+
+```text
+Admin Card
+    ↓
+LPC2148
+    ↓
+UART
+    ↓
+Linux main.c
+    ↓
+Admin selects operation
+    ↓
+Enter employee details
+    ↓
+Update CSV
+```
+
+The Linux application allows the admin to perform operations such as **adding, editing and deleting users**.
+
+### 👤 Employee
+
+When an employee scans their RFID card:
+
+```text
+Employee RFID Card
+        ↓
+    LPC2148
+        ↓
+    Employee ID
+        ↓
+     Linux C
+        ↓
+   Read/Update CSV
+        ↓
+   IN / OUT + Date + Time
+        ↓
+ Working Hours Calculation
+```
+
+The CSV maintains information such as **User ID, User Name, Date, IN time, OUT time, Working Hours and IN/OUT status**.
+
+---
+
+## 🔌 Hardware
+
+* LPC2148 ARM7 Development Board
+* RFID Reader
+* RFID Cards
+* AT25LC512 SPI EEPROM
+* 16×2 LCD
+* 4×4 Keypad
+* Switches
+* MAX232
+* USB-to-UART Converter
 
 ---
 
 ## 💻 Software
 
 * Embedded C
+* Linux C
 * Keil C Compiler
 * Flash Magic
-* Linux C
+* UART Communication
 * CSV File Handling
 
 ---
 
-
-## 🧩 Main Modules
-
-| Module            | Purpose                                    |
-| ----------------- | ------------------------------------------ |
-| 📟 LCD            | Display messages and menus                 |
-| ⌨️ Keypad         | Admin input and RTC editing                |
-| 📡 RFID           | Employee identification                    |
-| 🔌 UART           | Communication between LPC2148 and Linux    |
-| 🔄 **SPI**        | Communication with SPI EEPROM              |
-| 💾 **SPI EEPROM** | Stores admin card information              |
-| 🕒 RTC            | Date and time for attendance               |
-| 🐧 Linux C        | Employee management and attendance records |
-
----
 ## 📂 Project Structure
 
 ```text
-📦 Attendify-RFID
+Attendify--RFID-Smart-Employee-Tracking-Reporting-System/
 │
-├── 📄 main.c
-├── 📄 lcd.c
-├── 📄 lcd.h
-├── 📄 delay.c
-├── 📄 delay.h
-├── 📄 uart.c
-├── 📄 uart.h
-├── 📄 uart1.c
-├── 📄 uart1.h
-├── 📄 keypad.c
-├── 📄 keypad.h
-├── 📄 spi.c
-├── 📄 spi.h
-├── 📄 spi_eeprom.c
-├── 📄 spi_eeprom.h
+├── README.md
 │
-├── 🐧 linux_main.c
-├── 📊 users.csv
+├── Embedded/
+│   ├── main.c
+│   ├── admin.c
+│   ├── admin.h
+│   ├── lcd.c
+│   ├── lcd.h
+│   ├── kpm.c
+│   ├── kpm.h
+│   ├── rtc.c
+│   ├── rtc.h
+│   ├── rtc_edit.c
+│   ├── uart.c
+│   ├── uart1.c
+│   ├── uart1.h
+│   ├── SPI_Protocol.c
+│   ├── SPI_defines.h
+│   ├── SPI_functions.h
+│   ├── interrupt.c
+│   ├── interrupt.h
+│   ├── delay.c
+│   ├── delay.h
+│   ├── pin_connect_block.c
+│   ├── pin_connect_block.h
+│   └── other header files
 │
-└── 📖 README.md
-
-## 🔄 System Flow
-
-```text
-        RFID Card
-            │
-            ▼
-       ┌──────────┐
-       │  LPC2148 │
-       └────┬─────┘
-            │
-      ┌─────┴─────┐
-      │           │
-      ▼           ▼
-   SPI EEPROM    UART
-      │           │
-      │           ▼
-      │      Linux Application
-      │           │
-      │           ▼
-      │        users.csv
-      │
-      ▼
-  Admin Card
-  Information
-```
-
-
----
-
-## 🔐 Admin Operations
-
-Admin card provides:
-
-1. **Admin Card Change**
-2. **RTC Information Change**
-
-The admin card number is stored in the **AT25LC512 SPI EEPROM**.
-
----
-
-## 👤 Employee Attendance
-
-When an employee scans the RFID card:
-
-* Employee ID is identified
-* IN/OUT status is updated
-* Date and time are recorded
-* Working hours are calculated
-* Attendance information is stored in `users.csv`
-
----
-
-## 📊 CSV Records
-
-The Linux application maintains employee information such as:
-
-```text
-S.No | User ID | User Name | Date | Working Hours | IN/OUT Status | IN Time | OUT Time
+└── Linux/
+    ├── linux_main.c
+    └── employee_details.csv
 ```
 
 ---
 
-## 🔌 Communication
+## 🧩 Main Modules
 
-The LPC2148 communicates with the Linux application through **UART**.
+| Module         | Function                           |
+| -------------- | ---------------------------------- |
+| RFID           | Employee identification            |
+| LPC2148        | Main embedded controller           |
+| SPI EEPROM     | Non-volatile data storage          |
+| RTC            | Date and time                      |
+| LCD            | Display                            |
+| Keypad         | User/admin input                   |
+| UART           | LPC2148 ↔ Linux communication      |
+| Linux `main.c` | Employee and attendance processing |
+| CSV            | Employee and attendance database   |
 
-Example messages:
+---
+
+## 📊 CSV Record
+
+The attendance information is maintained in a structured CSV format:
 
 ```text
-Admin Card → ACARDNUMBER$
-User Card  → UCARDNUMBERRTCINFO$
+S.No | User ID | User Name | Date | Working Hours | IN | OUT | IN/OUT Status
 ```
 
----
-
-## 🛠️ Technologies
-
-**ARM7 • Embedded C • LPC2148 • RFID • SPI • EEPROM • UART • RTC • Linux C • CSV**
+The system updates the corresponding employee's IN/OUT information whenever an RFID card is received.
 
 ---
 
-## 👨‍💻 Project
+## 🎯 Key Embedded Concepts
 
-**Attendify-RFID — Smart Employee Tracking & Reporting System**
+* Embedded C programming
+* LPC2148 ARM7
+* RFID interfacing
+* SPI communication
+* EEPROM interfacing
+* UART communication
+* RTC interfacing
+* LCD interfacing
+* Keypad interfacing
+* Interrupt handling
+* Linux C programming
+* CSV file handling
+* Working-hours calculation
 
-Built as an embedded systems project integrating **RFID, SPI EEPROM, UART communication and Linux-based attendance management**.
+---
+
+## 👩‍💻 Author
+
+**DeepthiSri Avula**
+
+**Embedded Systems | Embedded C | ARM7 | SPI | UART**
+
+---
