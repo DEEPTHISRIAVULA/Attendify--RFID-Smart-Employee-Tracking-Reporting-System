@@ -60,25 +60,6 @@ int main()
 
 		}
 
-		
-
-		//UART Interrupt testing code
-
-		/*if(UART1_Fired){
-
-			UART1_Fired = 0;
-
-			CmdLCD(CLEAR_LCD);
-
-			ExtractRFID(UART1_BUFFER);
-
-			StrLCD(UART1_BUFFER);
-
-			delay_ms(500);	      
-
-			CmdLCD(CLEAR_LCD);
-
-		}*/ 	
 	}
 
 }
