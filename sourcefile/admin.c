@@ -166,9 +166,7 @@ void admin(void){
 
 									 CmdLCD(CLEAR_LCD);
 									 CmdLCD(GOTO_LINE1_POS0);
-									 //StrLCD(UART0_BUFFER);
-								//	LCD_SCROLL(UART0_BUFFER, 0, 0);
-								//	CmdLCD(GOTO_LINE2_POS0);
+								
 									StrLCD("  USER EXISTED");
 
 									delay_ms(2000);
@@ -339,15 +337,8 @@ void admin(void){
 
 								if((response == 'Y') || (response == 'y')){
 
-									//Receive_string_UART0(UART0_BUFFER, 20);
-
-									//Capitalize_String(UART0_BUFFER);
-
 									 CmdLCD(CLEAR_LCD);
 									 CmdLCD(GOTO_LINE1_POS0);
-									 //StrLCD(UART0_BUFFER);
-									//LCD_SCROLL(UART0_BUFFER, 0, 0);
-									//CmdLCD(GOTO_LINE2_POS0);
 
 									StrLCD("  USER  EDITED");
 
@@ -411,35 +402,6 @@ void admin(void){
 
 }
 
-/*void user(void){
-	char response;
-	frame(DATA_FRAME, UART1_BUFFER, "LOG");
-	Transmit_string_UART0(DATA_FRAME);
-	response = Receive_char_UART0();
-	if((response == 'Y') || (response == 'y')){
-		if(!IN){
-			IN = 1;
-			CmdLCD(CLEAR_LCD);
-			StrLCD("   LOGGED  IN");
-			CmdLCD(GOTO_LINE2_POS0 + 4);
-			DisplayRTCTime(HOUR, MIN, SEC);
-			delay_ms(1000);
-		}
-		else{
-			IN = 0;
-			CmdLCD(CLEAR_LCD);
-			StrLCD("   LOGGED OUT");
-			CmdLCD(GOTO_LINE2_POS0 + 4);
-			DisplayRTCTime(HOUR, MIN, SEC);
-			delay_ms(1000);
-		}
-	}
-	else if((response == 'N') || (response == 'n')){
-		CmdLCD(CLEAR_LCD);
-		StrLCD("USER NOT EXISTED");
-		delay_ms(1000);
-	}
-} */
 void user(void){
 
 	int timeout = 6000000, display = 0;
