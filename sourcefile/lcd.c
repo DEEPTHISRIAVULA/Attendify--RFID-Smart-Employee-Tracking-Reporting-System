@@ -11,16 +11,13 @@ void WriteLCD(u8 byte)
 	#if LCD_MODE==8
 	//select write operation
 	IOCLR0=1<<LCD_RW;
-	//write any byte onto data pin(d0/p0.8-d7/p0.15)
+	//write any byte onto data pin(d0/p1.16-d7/p1.23)
 	WRITEBYTE(IOPIN1,LCD_DATA,byte);
 	//provide high to low pulse on en pin
 	IOSET0=1<<LCD_EN;
 	delay_us(1);
 	IOCLR0=1<<LCD_EN;
 	delay_ms(2);
-	#elif LCD_MODE==4
-  //statements to be added	
-	#endif
 }
 
 void CmdLCD(u8 cmdByte)
@@ -33,7 +30,6 @@ void CmdLCD(u8 cmdByte)
 
 void InitLCD(void)
 {
-	//cfg p0.8-p0.15,p0.16,p0.17,p0.18 as gpio output pins
 	IODIR1|=(0xFF<<LCD_DATA);
 	IODIR0|= ((1<<LCD_RS)|(1<<LCD_RW)|(1<<LCD_EN));
 	
