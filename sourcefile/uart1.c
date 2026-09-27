@@ -20,11 +20,7 @@ void UART1_ISR(void) __irq {
 				if (UART1_RX_LEN == UART_FRAME_LEN) {
 					UART1_Fired  = 1;
 					UART1_BUFFER[UART1_RX_LEN]= '\0';
-					
-					//This may create problem?
-					//Make sure the FIFO should empty before the card is tapped.
-					// startinf with 0x02 and ex=nding with 0x03 while taking into the string is also a good practice
-					//Figure out these issues tomorrow.
+					// startinf with 0x02 and ending with 0x03 while taking into the string 
           UART1_RX_LEN = 0;      // ready for next frame
         }
       }
