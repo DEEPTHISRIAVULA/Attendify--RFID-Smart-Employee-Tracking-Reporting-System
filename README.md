@@ -23,7 +23,7 @@ The system uses an RFID reader to identify employees, records their IN/OUT atten
 
 ## 🏗️ System Architecture
 ### Block Diagram
-![Attendify-RFID Block Diagram](images/block-diagram.jpg)
+![Attendify-RFID Block Diagram](images/block-diagram.jpeg)
 The project contains **two application programs**:
 
 1. **Embedded application** – runs on the LPC2148 and handles RFID, LCD, keypad, RTC, SPI EEPROM, interrupts and UART.
@@ -31,7 +31,7 @@ The project contains **two application programs**:
 
 ---
 ## Hardware Setup
-![Attendify-RFID Hardware Setup](images/attendify-kit.jpg)
+![Attendify-RFID Hardware Setup](images/attendify-kit.jpeg)
 
 ## 🔄 How It Works
 
