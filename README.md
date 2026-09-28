@@ -22,37 +22,16 @@ The system uses an RFID reader to identify employees, records their IN/OUT atten
 ---
 
 ## 🏗️ System Architecture
-
-```text
-                    RFID CARD
-                        │
-                        ▼
-                  RFID READER
-                        │
-                        ▼
-                 ┌─────────────┐
-                 │   LPC2148   │
-                 │ Embedded C  │
-                 └──────┬──────┘
-                        │
-                     UART0
-                        │
-                        ▼
-                 ┌─────────────┐
-                 │ Linux C App │
-                 │   main.c    │
-                 └──────┬──────┘
-                        │
-                        ▼
-                  CSV Database
-```
-
+### Block Diagram
+![Attendify-RFID Block Diagram](images/block-diagram.jpg)
 The project contains **two application programs**:
 
 1. **Embedded application** – runs on the LPC2148 and handles RFID, LCD, keypad, RTC, SPI EEPROM, interrupts and UART.
 2. **Linux application** – runs on the PC, communicates with the controller through UART and manages employee/attendance information in the CSV file.
 
 ---
+## Hardware Setup
+![Attendify-RFID Block Diagram](images/attendify-kit.jpg)
 
 ## 🔄 How It Works
 
