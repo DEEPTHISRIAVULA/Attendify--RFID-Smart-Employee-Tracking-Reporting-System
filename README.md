@@ -31,7 +31,7 @@ The project contains **two application programs**:
 
 ---
 ## Hardware Setup
-![Attendify-RFID Block Diagram](images/attendify-kit.jpg)
+![Attendify-RFID Hardware Setup](images/attendify-kit.jpg)
 
 ## 🔄 How It Works
 
