@@ -33,6 +33,28 @@ The project contains **two application programs**:
 ## Hardware Setup
 ![Attendify-RFID Hardware Setup](images/attendify-kit.jpeg)
 
+## 🔌 Hardware
+
+* LPC2148 ARM7 Development Board
+* RFID Reader
+* RFID Cards
+* AT25LC512 SPI EEPROM
+* 16×2 LCD
+* 4×4 Keypad
+* Switches
+* MAX232
+* USB-to-UART Converter
+  
+## 💻 Software
+
+* Embedded C
+* Linux C
+* Keil C Compiler
+* Flash Magic
+* UART Communication
+* CSV File Handling
+
+
 ## 🔄 How It Works
 
 ### 👨‍💼 Admin
@@ -79,30 +101,6 @@ Employee RFID Card
 
 The CSV maintains information such as **User ID, User Name, Date, IN time, OUT time, Working Hours and IN/OUT status**.
 
----
-
-## 🔌 Hardware
-
-* LPC2148 ARM7 Development Board
-* RFID Reader
-* RFID Cards
-* AT25LC512 SPI EEPROM
-* 16×2 LCD
-* 4×4 Keypad
-* Switches
-* MAX232
-* USB-to-UART Converter
-
----
-
-## 💻 Software
-
-* Embedded C
-* Linux C
-* Keil C Compiler
-* Flash Magic
-* UART Communication
-* CSV File Handling
 
 ---
 
